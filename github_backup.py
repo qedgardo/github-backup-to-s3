@@ -47,11 +47,11 @@ def clone_compress_upload_repo(repo, github_token, bucket_name):
     tar.add(dst_path)
     tar.close()
 
-    # ## Stream to a file in an S3 bucket
-    # s3 = boto3.resource('s3')
-    # data = open(tar_filename, 'rb')
-    # object_name = directory + tar_filename
-    # s3.Bucket(bucket_name).put_object(Key=object_name, Body=data)
+    ## Stream to a file in an S3 bucket
+    s3 = boto3.resource('s3')
+    data = open(tar_filename, 'rb')
+    object_name = directory + tar_filename
+    s3.Bucket(bucket_name).put_object(Key=object_name, Body=data)
 
     ## Cleanup
     shutil.rmtree(dst_path, ignore_errors=True)
